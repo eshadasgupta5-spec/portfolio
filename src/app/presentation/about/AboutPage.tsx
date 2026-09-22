@@ -22,7 +22,7 @@ export function AboutPage() {
     <>
       <div>
       <main className="min-h-screen pt-28">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           {/* Header */}
           <div ref={headerRef} className="grid md:grid-cols-2 gap-16 mb-20">
             <div>

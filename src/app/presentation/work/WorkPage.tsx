@@ -43,7 +43,7 @@ export function WorkPage() {
     <>
       <div>
         <main className="min-h-screen pt-28 pb-0">
-          <div className="max-w-7xl mx-auto px-8">
+          <div className="max-w-6xl mx-auto px-8">
             <div ref={headerRef} className="mb-14">
               <p className="text-[10px] font-semibold text-muted tracking-[0.18em] uppercase mb-3">Portfolio</p>
               <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">Selected Work</h1>

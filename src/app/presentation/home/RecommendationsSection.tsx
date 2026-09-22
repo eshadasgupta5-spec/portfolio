@@ -103,7 +103,7 @@ export function RecommendationsSection() {
 
   return (
     <div ref={rootRef} className="relative h-screen w-full bg-black overflow-hidden">
-      <div className="max-w-7xl w-full mx-auto px-8 pt-50">
+      <div className="max-w-6xl w-full mx-auto px-8 pt-32">
         <div ref={headingRef}>
           <h2 className="text-6xl font-semibold tracking-tight text-white leading-none mb-8">
             Don&apos;t take my{' '}

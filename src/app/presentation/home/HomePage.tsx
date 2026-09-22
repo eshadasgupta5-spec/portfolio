@@ -7,7 +7,7 @@ export function HomePage() {
     <main>
       <div>
         <HeroSection />
-        <div className="pt-6 pb-32 bg-black" />
+        <div className="bg-black" />
         <RecommendationsSection />
       </div>
       <GetInTouch />

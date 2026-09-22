@@ -105,7 +105,7 @@ export function ProductThinkingPage() {
     <>
       <div>
       <main className="min-h-screen pt-28">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-6">
           <div ref={headerRef} className="mb-14">
             <p className="text-xs font-medium text-muted tracking-widest uppercase mb-3">Writing</p>
             <h1 className="text-5xl md:text-6xl font-semibold tracking-tight mb-4">

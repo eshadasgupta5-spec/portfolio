@@ -93,7 +93,7 @@ export function ProjectTemplateOne({ caseStudy }: { caseStudy: ProjectCaseStudy 
     <>
       <div ref={rootRef}>
         <main className="min-h-screen pt-28">
-          <div className="max-w-6xl mx-auto px-6">
+          <div className="max-w-5xl mx-auto px-6">
             <Link
               to="/work"
               className="inline-flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors mb-14"

@@ -10,7 +10,7 @@ export function ProjectCard({ project, tone = 'dark' }: { project: Project; tone
   return (
     <div className="group h-full flex flex-col">
       <div
-        className="aspect-16/10 overflow-hidden rounded-2xl relative shrink-0"
+        className="aspect-16/10 overflow-hidden rounded-2xl relative shrink-0 shadow-xl shadow-black/10"
         style={!project.image ? { backgroundColor: project.color } : undefined}
       >
         {project.image ? (

@@ -65,12 +65,6 @@ export function useHeroAnimation() {
       },
     });
 
-    const infos = cards
-      .map((card) => card.querySelector<HTMLElement>('[data-card-info]'))
-      .filter(Boolean) as HTMLElement[];
-
-    gsap.set(infos, { opacity: 0, y: 12 });
-
     // fromTo — GSAP owns both ends, no ambiguity on reverse
     cards.forEach((card, i) => {
       const fan = FAN_CARDS[i];
@@ -92,14 +86,6 @@ export function useHeroAnimation() {
         ease: 'none',
         duration: 1,
       }, 0);
-    });
-
-    infos.forEach((info, i) => {
-      tl.fromTo(info,
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, ease: 'power2.out', duration: 0.25 },
-        0.7 + i * 0.04
-      );
     });
 
     tl.fromTo(seeAllRef.current,

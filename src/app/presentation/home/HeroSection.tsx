@@ -14,7 +14,7 @@ export function HeroSection() {
     <div ref={wrapperRef} className="relative">
 
       <div ref={heroRef} className="pt-44 pb-30">
-        <div className="max-w-7xl mx-auto px-8">
+        <div className="max-w-6xl mx-auto px-8">
           {/* Two-column row: tagline + CTAs | fan anchor */}
           <div className="grid grid-cols-2 gap-2 items-center">
             <div className="flex flex-col gap-6">
@@ -60,7 +60,7 @@ export function HeroSection() {
 
       {/* Projects grid section — constrained width + fixed aspect-ratio slots */}
       <div className="bg-black min-h-dvh flex flex-col justify-center py-12 md:py-16">
-        <div className="max-w-7xl mx-auto px-8 w-full">
+        <div className="max-w-6xl mx-auto px-8 w-full">
           <h2 className="text-5xl md:text-6xl font-semibold tracking-tight leading-none text-surface mb-3">
             Projects
           </h2>
