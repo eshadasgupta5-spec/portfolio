@@ -2,6 +2,19 @@ import type { Project } from '../entities/Project';
 
 const PROJECTS: Project[] = [
   {
+    id: 'doublecheck',
+    title: 'DoubleCheck',
+    category: 'Banking-as-a-Service',
+    year: '2026',
+    description:
+      'Positioning and go-to-market for a US fintech — from a stalled consumer product to BaaS Solution of the Year in a year.',
+    color: '#e4f4ea',
+    accentColor: '#1f9d55',
+    tags: ['Positioning', 'GTM', 'Brand'],
+    featured: true,
+    slug: 'doublecheck',
+  },
+  {
     id: '1',
     title: 'HealthTrack',
     category: 'Mobile App',

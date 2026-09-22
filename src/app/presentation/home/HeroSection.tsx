@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router';
 import { useHomeData } from './hooks/useHomeData';
 import { useHeroAnimation } from './hooks/useHeroAnimation';
+import { ProjectCard, ProjectCardLink } from '../../shared/components/ProjectCard';
 
 export function HeroSection() {
   const { featuredProjects } = useHomeData();
@@ -64,14 +65,16 @@ export function HeroSection() {
             Projects
           </h2>
 
-          {/* Grid slots — cards are sized to match these */}
           <div className="grid grid-cols-2 gap-4 md:gap-5 mt-10">
-            {projects.map((_, i) => (
+            {projects.map((project, i) => (
               <div
-                key={i}
+                key={project.id}
                 ref={(el) => { gridSlotRefs.current[i] = el; }}
-                className="w-full aspect-16/10"
-              />
+                className="w-full invisible"
+                aria-hidden
+              >
+                <ProjectCard project={project} tone="light" />
+              </div>
             ))}
           </div>
 
@@ -90,12 +93,11 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Floating cards — GSAP positions these absolutely */}
       {projects.map((project, i) => (
         <div
           key={project.id}
           ref={(el) => { cardRefs.current[i] = el; }}
-          className="absolute rounded-2xl overflow-hidden select-none group cursor-pointer"
+          className="absolute select-none"
           style={{
             left: 0,
             top: 0,
@@ -104,42 +106,7 @@ export function HeroSection() {
             opacity: 0,
           }}
         >
-          <img
-            src={project.image ?? `https://picsum.photos/seed/${project.id}/900/675`}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            draggable={false}
-          />
-
-          {/* Dark gradient scrim — fades in on hover */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-          {/* Category badge — always visible, top-left */}
-          <div className="absolute top-4 left-4">
-            <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-wide backdrop-blur-sm bg-white/15 text-white border border-white/20">
-              {project.category}
-            </span>
-          </div>
-
-          {/* Hover info row */}
-          <div className="absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between gap-3 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-            <div>
-              <p className="text-[10px] text-white/50 font-medium tracking-widest uppercase mb-0.5">
-                {project.year}
-              </p>
-              <h3 className="text-base font-semibold text-white tracking-tight leading-tight">
-                {project.title}
-              </h3>
-            </div>
-            <div className="shrink-0">
-              <span className="inline-flex items-center gap-1.5 bg-white text-primary px-3 py-1.5 rounded-full text-[10px] font-bold whitespace-nowrap tracking-wide">
-                View
-                <svg className="w-2.5 h-2.5" viewBox="0 0 14 14" fill="none">
-                  <path d="M1 7H13M7 1L13 7L7 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </span>
-            </div>
-          </div>
+          <ProjectCardLink project={project} tone="light" />
         </div>
       ))}
     </div>

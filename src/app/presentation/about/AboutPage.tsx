@@ -11,7 +11,6 @@ const SKILLS = [
 
 export function AboutPage() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
@@ -21,7 +20,7 @@ export function AboutPage() {
 
   return (
     <>
-      <div ref={sectionRef}>
+      <div>
       <main className="min-h-screen pt-28">
         <div className="max-w-6xl mx-auto px-6">
           {/* Header */}
@@ -69,7 +68,7 @@ export function AboutPage() {
         </div>
       </main>
       </div>
-      <GetInTouch contentRef={sectionRef} />
+      <GetInTouch />
     </>
   );
 }

@@ -94,7 +94,6 @@ function PostCard({ post, index }: { post: typeof POSTS[0]; index: number }) {
 
 export function ProductThinkingPage() {
   const headerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const el = headerRef.current;
@@ -104,7 +103,7 @@ export function ProductThinkingPage() {
 
   return (
     <>
-      <div ref={contentRef}>
+      <div>
       <main className="min-h-screen pt-28">
         <div className="max-w-5xl mx-auto px-6">
           <div ref={headerRef} className="mb-14">
@@ -125,7 +124,7 @@ export function ProductThinkingPage() {
         </div>
       </main>
       </div>
-      <GetInTouch contentRef={contentRef} />
+      <GetInTouch />
     </>
   );
 }

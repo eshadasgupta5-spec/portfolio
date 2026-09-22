@@ -1,49 +1,49 @@
-import { useRef, type RefObject } from 'react';
+import { useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
-interface GetInTouchProps {
-  contentRef: RefObject<HTMLElement | null>;
-}
-
-const GetInTouch = ({ contentRef }: GetInTouchProps) => {
+const GetInTouch = () => {
   const panelRef = useRef<HTMLDivElement>(null);
+  const spacerRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const content = contentRef.current;
     const panel = panelRef.current;
-    if (!content || !panel) return;
+    const spacer = spacerRef.current;
+    if (!panel || !spacer) return;
 
-    gsap.set(panel, { yPercent: 100 });
-
-    ScrollTrigger.create({
-      trigger: content,
-      start: 'bottom bottom',
-      end: '+=100%',
-      pin: true,
-      pinSpacing: true,
-    });
-
-    gsap.to(panel, {
-      yPercent: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: content,
-        start: 'bottom bottom',
-        end: '+=100%',
-        scrub: true,
-      },
-    });
-  }, { dependencies: [contentRef] });
+    // Reveal the fixed panel by scrubbing it up over one extra viewport of
+    // scroll (the spacer). No `pin` — pinning reparents a DOM node into a
+    // ScrollTrigger-generated pin-spacer, which React doesn't track and which
+    // leaks across route changes, trapping scroll on the next page.
+    gsap.fromTo(
+      panel,
+      { yPercent: 100 },
+      {
+        yPercent: 0,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: spacer,
+          start: 'top bottom',
+          end: 'bottom bottom',
+          scrub: true,
+        },
+      }
+    );
+  }, { dependencies: [] });
 
   return (
-    <div
-      ref={panelRef}
-      className="fixed bottom-0 left-0 right-0 h-screen w-full bg-white flex flex-col justify-between z-20 px-8 md:px-16 py-12 md:py-16"
-    >
+    <>
+      {/* Owned-by-this-component spacer that supplies the scroll distance for
+          the reveal. The rising panel covers it exactly as it enters view. */}
+      <div ref={spacerRef} aria-hidden className="h-screen w-full pointer-events-none" />
+
+      <div
+        ref={panelRef}
+        className="fixed bottom-0 left-0 right-0 h-screen w-full bg-white flex flex-col justify-between z-20 px-8 md:px-16 py-12 md:py-16"
+      >
       {/* Top section: label + heading + CTA */}
       <div className="flex flex-col justify-center flex-1">
         <p className="text-sm font-bold tracking-[0.2em] uppercase text-muted mb-8">
@@ -102,7 +102,8 @@ const GetInTouch = ({ contentRef }: GetInTouchProps) => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

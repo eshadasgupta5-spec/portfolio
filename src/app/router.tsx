@@ -5,6 +5,7 @@ import { workRoute } from './routes/work.route';
 import { aboutRoute } from './routes/about.route';
 import { productThinkingRoute } from './routes/product-thinking.route';
 import { contactRoute } from './routes/contact.route';
+import { projectRoute } from './routes/project.route';
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
@@ -12,6 +13,7 @@ const routeTree = rootRoute.addChildren([
   aboutRoute,
   productThinkingRoute,
   contactRoute,
+  projectRoute,
 ]);
 
 export const router = createRouter({ routeTree });

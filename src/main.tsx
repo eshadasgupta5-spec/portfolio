@@ -8,7 +8,7 @@ import ReactLenis from 'lenis/react';
 const rootElement = document.getElementById('root')!;
 createRoot(rootElement).render(
   <StrictMode>
-     <ReactLenis root options={{ lerp: 0.05 }}>
+     <ReactLenis root options={{ lerp: 0.05, autoRaf: false }}>
       <RouterProvider router={router} />
      </ReactLenis>
   </StrictMode>
